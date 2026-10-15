@@ -34,4 +34,5 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
       - run: pnpm build
+      - run: pnpm exec playwright test --config playwright.pwa.config.ts
       - run: git diff --check

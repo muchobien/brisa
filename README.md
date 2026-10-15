@@ -17,7 +17,7 @@ native app.
 - Durable delivery records, queue retries, expired-subscription cleanup, and
   30-day message history.
 - A custom glass design system with light/dark appearances, mobile navigation,
-  reduced-motion support, and an installable PWA.
+  reduced-motion support, and an installable PWA powered by `vite-plugin-pwa`.
 
 One installation is **one trusted workspace**. Its access key grants full
 management access. Topics and read status are shared; this release does not
@@ -78,12 +78,15 @@ pnpm check
 pnpm typecheck
 pnpm test
 pnpm test:e2e
+pnpm test:pwa
 pnpm build
 ```
 
 The runtime suite executes the bundled Worker in Miniflare with real D1 and
 Queues bindings and a mocked external push provider. Playwright covers desktop
 and mobile flows. Install its browser with `pnpm exec playwright install chromium`.
+The PWA suite builds the app and tests offline navigation, cache isolation, and
+user-approved updates against the production preview.
 
 See [architecture](docs/architecture.md), the [design system](docs/design-system.md),
 and [contributing](CONTRIBUTING.md). Brisa uses Vite+, pnpm, React, TypeScript,

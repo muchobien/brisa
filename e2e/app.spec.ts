@@ -63,5 +63,8 @@ test("mobile navigation, install assets, and forms remain usable", async ({ page
   const manifest = await (await request.get("/manifest.webmanifest")).json();
   expect(manifest.display).toBe("standalone");
   for (const icon of manifest.icons) expect((await request.get(icon.src)).status()).toBe(200);
-  expect((await request.get("/sw.js")).status()).toBe(200);
+  const script = await page.evaluate(
+    async () => (await navigator.serviceWorker.ready).active?.scriptURL,
+  );
+  expect(script).toContain("/dev-sw.js?dev-sw");
 });

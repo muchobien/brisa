@@ -10,6 +10,10 @@ Run `pnpm check`, `pnpm typecheck`, `pnpm test`, `pnpm test:e2e`, `pnpm build`, 
 `pnpm typegen` after editing bindings. They are generated from the config and
 local secret names, and are not checked in.
 
+Run `pnpm test:pwa` after service-worker, caching, manifest, or update-prompt
+changes. It builds the app and tests its production PWA behavior. PWA configuration
+lives in `vite.config.ts`; custom push handlers live in `src/pwa/sw.ts`.
+
 Use typed request contracts in `shared/`, parameterized D1 queries, and explicit
 authentication on new routes. Keep tokens, subscriptions, secrets, and message
 bodies out of logs. Browser push endpoints are validated because the delivery

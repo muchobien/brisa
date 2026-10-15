@@ -4,6 +4,17 @@ One Cloudflare Worker handles the authenticated management API, scoped ingestion
 API, queue consumer, and scheduled maintenance. Workers Static Assets serves the
 Vite-built React PWA. D1 stores persistent state; Queues schedules push attempts.
 
+`vite-plugin-pwa` generates the web manifest and builds `src/pwa/sw.ts` using
+Workbox `injectManifest`. Its explicit precache includes the public offline page
+and icons. Navigations use the network with an offline-page fallback; API requests
+and authenticated content never enter the cache. The stable `/sw.js` URL and `/`
+scope preserve existing browser registrations and push subscriptions.
+
+New releases wait for the user to choose Reload in the update prompt. The client
+then sends `SKIP_WAITING`; the activated worker claims clients and the page reloads.
+Activation also removes the original `brisa-offline-v1` cache. Development uses
+the plugin’s module service worker at `/dev-sw.js?dev-sw`.
+
 ## Authentication and data
 
 The generated workspace access key is verified using fixed-length SHA-256 hashes
@@ -71,3 +82,5 @@ push requests are intercepted in tests; no real browser subscription is contacte
 Worker types are generated from Wrangler and local secret names. Both frontend
 and backend use shared Zod request contracts. Playwright checks real desktop and
 mobile browser flows against the Cloudflare Vite development server.
+The separate PWA browser suite uses a production build to check offline navigation,
+cache boundaries, and update activation while a form contains a draft.

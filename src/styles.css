@@ -1517,3 +1517,48 @@ body {
     margin-left: 0;
   }
 }
+
+.pwa-update {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  max-width: calc(100% - 32px);
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: var(--surface-solid);
+  box-shadow: var(--shadow-float);
+}
+.pwa-update > svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.pwa-update strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+.pwa-update p {
+  font-size: 11px;
+  color: var(--ink-secondary);
+  margin: 6px 0 0;
+}
+@media (max-width: 640px) {
+  .pwa-update {
+    left: 16px;
+    right: 16px;
+    bottom: calc(100px + env(safe-area-inset-bottom));
+    gap: 9px;
+    padding: 14px;
+  }
+  .pwa-update .button {
+    font-size: 11px;
+    padding: 9px 12px;
+    min-height: 36px;
+  }
+  .pwa-update strong {
+    font-size: 12px;
+  }
+}

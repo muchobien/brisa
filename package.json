@@ -24,7 +24,8 @@
     "preview": "vp preview",
     "deploy": "node scripts/deploy.mjs",
     "icons": "node scripts/icons.mjs",
-    "pretest": "wrangler deploy --config wrangler.jsonc --dry-run --assets public --outdir artifacts/test-worker"
+    "pretest": "wrangler deploy --config wrangler.jsonc --dry-run --assets public --outdir artifacts/test-worker",
+    "test:pwa": "pnpm build && playwright test --config playwright.pwa.config.ts"
   },
   "dependencies": {
     "hono": "4.13.13",
@@ -32,6 +33,9 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "web-push": "3.6.7",
+    "workbox-core": "7.4.1",
+    "workbox-precaching": "7.4.1",
+    "workbox-window": "7.4.1",
     "zod": "4.6.7"
   },
   "devDependencies": {
@@ -47,6 +51,7 @@
     "sharp": "0.35.5",
     "typescript": "~7.0.2",
     "vite": "catalog:",
+    "vite-plugin-pwa": "2.0.0",
     "vite-plus": "1.2.0",
     "wrangler": "4.151.0"
   },

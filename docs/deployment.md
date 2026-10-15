@@ -84,6 +84,12 @@ to Brisa itself.
 
 ## Updates and operations
 
+The PWA plugin keeps a new service worker waiting while an existing version is
+open. Users see a Reload prompt and can finish their current form before updating.
+Keep the `/sw.js` URL, scope, and origin stable so push subscriptions survive
+routine releases. `pnpm test:pwa` verifies the built worker’s offline and update
+behavior locally before deployment.
+
 Back up D1 and preserve the VAPID keys and access key before changes. Apply new
 migrations with `pnpm db:migrate:remote`, run the checks, and deploy. Restoring a
 Worker version does not roll back database migrations or storage.
