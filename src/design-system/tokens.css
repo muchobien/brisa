@@ -1,0 +1,120 @@
+/* Brisa design system · soft glass, crisp ink, a little color. */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  color-scheme: light;
+  --canvas: #f4f5fa;
+  --ink: #292b40;
+  --ink-secondary: #62657b;
+  --ink-tertiary: #767a91;
+  --surface: rgb(255 255 255 / 0.66);
+  --surface-solid: #fff;
+  --surface-hover: rgb(255 255 255 / 0.86);
+  --stroke: rgb(61 51 100 / 0.075);
+  --stroke-bright: rgb(255 255 255 / 0.92);
+  --accent: #7060dc;
+  --accent-strong: #6050ce;
+  --accent-soft: rgb(118 96 221 / 0.1);
+  --shadow: 0 3px 6px rgb(45 33 88 / 0.015), 0 14px 40px rgb(64 48 120 / 0.035);
+  --shadow-float: 0 8px 30px rgb(69 50 125 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.7);
+  --violet: #7762d8;
+  --violet-soft: #efebfd;
+  --blue: #4c85cf;
+  --blue-soft: #e8f1fc;
+  --mint: #368c78;
+  --mint-soft: #e2f3eb;
+  --amber: #a5782d;
+  --amber-soft: #faf0d9;
+  --rose: #bd637d;
+  --rose-soft: #fbe9ef;
+  --danger: #b34360;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 100px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 180ms;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #171720;
+  --ink: #eeedf6;
+  --ink-secondary: #bbb7cf;
+  --ink-tertiary: #a09bb4;
+  --surface: rgb(39 37 52 / 0.72);
+  --surface-solid: #282634;
+  --surface-hover: rgb(52 48 69 / 0.88);
+  --stroke: rgb(220 208 255 / 0.09);
+  --stroke-bright: rgb(220 208 255 / 0.1);
+  --accent: #b4a3ff;
+  --accent-strong: #c4b6ff;
+  --accent-soft: rgb(165 141 255 / 0.14);
+  --shadow: 0 14px 40px rgb(0 0 0 / 0.1);
+  --shadow-float: 0 8px 30px rgb(0 0 0 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.05);
+  --violet: #baa6ff;
+  --violet-soft: #363046;
+  --blue: #92bdf3;
+  --blue-soft: #293649;
+  --mint: #8ad4bc;
+  --mint-soft: #253b35;
+  --amber: #e5c07d;
+  --amber-soft: #423928;
+  --rose: #eaa0b5;
+  --rose-soft: #472c38;
+  --danger: #e9a0b4;
+}
+.color-violet {
+  --topic: var(--violet);
+  --topic-soft: var(--violet-soft);
+}
+.color-blue {
+  --topic: var(--blue);
+  --topic-soft: var(--blue-soft);
+}
+.color-mint {
+  --topic: var(--mint);
+  --topic-soft: var(--mint-soft);
+}
+.color-amber {
+  --topic: var(--amber);
+  --topic-soft: var(--amber-soft);
+}
+.color-rose {
+  --topic: var(--rose);
+  --topic-soft: var(--rose-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --surface: var(--surface-solid);
+  }
+  .glass {
+    backdrop-filter: none !important;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --ink-secondary: var(--ink);
+    --ink-tertiary: var(--ink);
+    --stroke: currentColor;
+    --surface: var(--surface-solid);
+  }
+}

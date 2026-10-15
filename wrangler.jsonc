@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brisa",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "d1_databases": [{ "binding": "DB", "database_name": "brisa", "migrations_dir": "migrations" }],
+  "queues": {
+    "producers": [{ "binding": "PUSH_QUEUE", "queue": "brisa-push" }],
+    "consumers": [
+      {
+        "queue": "brisa-push",
+        "max_batch_size": 1,
+        "max_batch_timeout": 1,
+        "max_retries": 5,
+        "dead_letter_queue": "brisa-push-failed",
+      },
+    ],
+  },
+  "triggers": { "crons": ["* * * * *"] },
+  "observability": { "enabled": true, "traces": { "enabled": true, "head_sampling_rate": 0.1 } },
+}
